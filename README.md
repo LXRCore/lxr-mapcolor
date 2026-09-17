@@ -4,6 +4,9 @@
 
 Standalone RedM resource. Picks a theme (`Config.Theme`) and:
 
+![The colour presets](docs/img/presets.png)
+
+
 * redraws the route to your waypoint as a GPS multi-route in the theme colour
   (RDR3 has no `ReplaceHudColourWithRgba`; routes take named colours such as
   `COLOR_GOLD`);
