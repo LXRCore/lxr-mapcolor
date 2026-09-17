@@ -23,6 +23,10 @@ description 'LXRCore map colour: themed waypoint route + shared blip colour voca
 version '1.0.0'
 repository 'https://github.com/LXRCore/lxr-mapcolor'
 
-shared_script 'config.lua'
+shared_scripts {
+    'shared/locale.lua',
+    'locales/*.lua',
+    'config.lua',
+}
 client_script 'client/main.lua'
 server_script 'server/main.lua'

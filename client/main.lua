@@ -79,10 +79,11 @@ if Config.Command and Config.Command ~= '' then
             local list = {}
             for k in pairs(Config.Presets) do list[#list + 1] = k end
             table.sort(list)
-            return TriggerEvent('chat:addMessage', { args = { 'lxr-mapcolor', ('current: %s · presets: %s'):format(theme, table.concat(list, ', ')) } })
+            return TriggerEvent('chat:addMessage', { args = { 'lxr-mapcolor', Lang:t('chat.current', { theme = theme, list = table.concat(list, ', ') }) } })
         end
-        if not setTheme(name) then TriggerEvent('chat:addMessage', { args = { 'lxr-mapcolor', 'unknown preset ' .. name } }) end
+        if not setTheme(name) then TriggerEvent('chat:addMessage', { args = { 'lxr-mapcolor', Lang:t('chat.unknown', { name = name }) } }) end
     end, false)
+    TriggerEvent('chat:addSuggestion', '/' .. Config.Command, Lang:t('command.help', { cmd = Config.Command }))
 end
 
 AddEventHandler('onResourceStop', function(res) if res == GetCurrentResourceName() then clearRoute() end end)
