@@ -1,4 +1,6 @@
-# 🐺 lxr-mapcolor — one colour for the whole map
+<img src="https://raw.githubusercontent.com/LXRCore/.github/main/profile/lxrcore-logo.png" alt="LXRCore" width="72" align="left" style="margin-right:12px">
+
+# lxr-mapcolor — one colour for the whole map
 
 Standalone RedM resource. Picks a theme (`Config.Theme`) and:
 
@@ -16,9 +18,6 @@ local r, g, b = table.unpack(exports['lxr-mapcolor']:rgb())
 
 * `/mapcolor <preset>` lets a player pick their own (saved in KVP);
   `exports['lxr-mapcolor']:setTheme('bluelight')` from scripts.
-
-Converted from the FiveM `lx-mapcolor`: the HUD-colour slot approach does not
-exist in RDR3, so the theme became a named-colour + blip-modifier vocabulary.
 
 **Status:** syntax-checked; NOT TESTED in-game (route natives from the RDR3
 native DB: `START_GPS_MULTI_ROUTE`, `ADD_POINT_TO_GPS_MULTI_ROUTE`,
