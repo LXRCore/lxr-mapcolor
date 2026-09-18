@@ -39,7 +39,7 @@ Config.Lang = 'en'
 -- ████████████████████████████████████████████████████████████████████████████████
 Config.Theme = 'gold'   -- one of Config.Presets, or 'custom' → Config.Custom
 
-Config.Custom = { color = 'COLOR_GOLD', blipModifier = 'BLIP_MODIFIER_MP_COLOR_10', rgb = { 196, 165, 116 } }
+Config.Custom = { color = 'COLOR_RED', blipModifier = 'BLIP_MODIFIER_MP_COLOR_1', rgb = { 194, 28, 55 } }
 
 -- Named game colours and the matching player-colour blip modifier. `rgb` is only used for chat / NUI.
 Config.Presets = {
