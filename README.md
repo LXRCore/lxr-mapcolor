@@ -14,7 +14,7 @@ Standalone RedM resource. Picks a theme (`Config.Theme`) and:
   share it:
 
 ```lua
-local mod = exports['lxr-mapcolor']:modifier()      -- BLIP_MODIFIER_MP_COLOR_n hash
+local mod = exports['lxr-mapcolor']:modifier('doctor')   -- BLIP_MODIFIER_MP_COLOR_n hash for that kind (Config.Kinds); no kind → the theme
 Citizen.InvokeNative(0x662D364ABF16DE2F, blip, mod)  -- BLIP_ADD_MODIFIER
 local r, g, b = table.unpack(exports['lxr-mapcolor']:rgb())
 ```

@@ -74,6 +74,29 @@ Config.PlayerBlip = {
     enabled  = false,    -- apply the theme modifier to the local player's own blip (only visible when a player blip exists)
 }
 
+-- ████████████████████████████████████████████████████████████████████████████████
+-- ████████████████████████ ONE COLOUR PER KIND OF PLACE ██████████████████████████
+-- ████████████████████████████████████████████████████████████████████████████████
+-- `exports['lxr-mapcolor']:modifier('doctor')` → that kind's preset; an unknown or missing kind → the theme.
+-- Keys are what the official resources pass; add your own for third-party blips.
+Config.Kinds = {
+    shop     = 'green',      -- general stores
+    gunsmith = 'red',
+    doctor   = 'white',
+    bank     = 'yellow',
+    post     = 'bluelight',
+    stable   = 'copper',
+    law      = 'blue',
+    saloon   = 'orange',
+    tailor   = 'purple',
+    barber   = 'pink',
+    market   = 'greenlight',
+    craft    = 'silver',
+    storage  = 'copper',
+    train    = 'silver',
+    camp     = 'greenlight',
+}
+
 Config.Console = true    -- print the applied theme in F8
 
 -- Chat command to switch the theme for yourself (empty = disabled). Saved per player in KVP.

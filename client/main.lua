@@ -50,8 +50,11 @@ CreateThread(function()
     end
 end)
 
----Blip modifier hash for the current theme — other LXR resources call this for their blips.
-local function modifier() return joaat(themeDef().blipModifier) end
+---Blip modifier hash for a kind of place (Config.Kinds) or, without one, the current theme.
+local function modifier(kind)
+    local preset = kind and Config.Kinds and Config.Kinds[kind] and Config.Presets[Config.Kinds[kind]]
+    return joaat((preset or themeDef()).blipModifier)
+end
 local function colorHash() return joaat(themeDef().color) end
 local function rgb() return themeDef().rgb end
 
