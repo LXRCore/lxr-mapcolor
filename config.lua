@@ -79,12 +79,14 @@ Config.PlayerBlip = {
 -- ████████████████████████████████████████████████████████████████████████████████
 -- `exports['lxr-mapcolor']:modifier('doctor')` → that kind's preset; an unknown or missing kind → the theme.
 -- Keys are what the official resources pass; add your own for third-party blips.
--- Recolour the shop / job blips by kind at all?
---   false - a general store, gunsmith, doctor, tailor... keeps the icon colour the game
---           gave it. The map reads the way Rockstar drew it and the only colour this
---           resource adds is the territory tint and the per-town colour below.
---   true  - each kind is tinted with its Config.Kinds colour.
-Config.KindBlips = false
+-- Recolour the shop / job blips by kind?
+--   true  - a general store is green, a gunsmith red, a doctor white, a tailor purple.
+--           Reads at a glance once you know the vocabulary, and sits well next to the
+--           territory tint: the land is the state's colour, the pin is the trade's.
+--   false - every blip keeps the icon colour the game gave it. modifier() returns 0 and
+--           no modifier is added, so none of the callers need to change.
+-- Independent of the territory tint and of the town colours - all three switch separately.
+Config.KindBlips = true
 
 Config.Kinds = {
     shop     = 'green',      -- general stores

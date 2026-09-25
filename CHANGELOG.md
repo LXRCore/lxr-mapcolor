@@ -11,10 +11,12 @@
   when the player changes theme, clears on stop.
 
 ### Changed
-- **`Config.KindBlips`, default `false`.** Shop, gunsmith, doctor and tailor blips keep the
-  colour the game gave them instead of being tinted per kind. The whole-map rainbow was
-  never what a coloured map meant. `true` restores the old behaviour; the town colours and
-  the territory tint are unaffected either way.
+- **`Config.KindBlips`, default `true`.** The per-kind blip colours — store green, gunsmith
+  red, doctor white, tailor purple — are now a switch of their own rather than something
+  welded on. They sit alongside the territory tint: the land carries the state's colour,
+  the pin carries the trade's. `false` makes `modifier()` return 0 so every blip keeps the
+  colour the game gave it, and none of the 17 callers need to change. The tint, the kind
+  colours and the town colours all switch independently.
 
 ## 3.0.0 — 2026-09-19
 * LXRCore v3 release line: every resource ships as 3.0.0 from here (the entries below are the road to it).
