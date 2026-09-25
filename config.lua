@@ -79,6 +79,13 @@ Config.PlayerBlip = {
 -- ████████████████████████████████████████████████████████████████████████████████
 -- `exports['lxr-mapcolor']:modifier('doctor')` → that kind's preset; an unknown or missing kind → the theme.
 -- Keys are what the official resources pass; add your own for third-party blips.
+-- Recolour the shop / job blips by kind at all?
+--   false - a general store, gunsmith, doctor, tailor... keeps the icon colour the game
+--           gave it. The map reads the way Rockstar drew it and the only colour this
+--           resource adds is the territory tint and the per-town colour below.
+--   true  - each kind is tinted with its Config.Kinds colour.
+Config.KindBlips = false
+
 Config.Kinds = {
     shop     = 'green',      -- general stores
     gunsmith = 'red',
@@ -96,6 +103,81 @@ Config.Kinds = {
     train    = 'silver',
     camp     = 'greenlight',
 }
+
+-- ████████████████████████████████████████████████████████████████████████████████
+-- ████████████████████████ TERRITORY TINT ████████████████████████████████████████
+-- ████████████████████████████████████████████████████████████████████████████████
+-- The states painted on the paper map - New Hanover olive, Lemoyne blue, Roanoke red.
+-- This is the thing people mean by "a coloured map"; it is NOT blips, and no texture
+-- has to be replaced for it. The game paints a named region when you hand it a zone
+-- hash and a colour:
+--
+--     0x563FCB6620523917(zoneHash, GetHashKey(colour))   -- paint
+--     0x6786D7AFAC3162B3(zoneHash)                       -- clear
+--
+-- The zone hashes are the game's own, published in femga/rdr3_discoveries under
+-- graphics/minimap/wanted_regions. `color` is a key of Config.Presets above, so the
+-- territories speak the same colour vocabulary as everything else here.
+--
+-- Shipped ON by default: a plain parchment map is the thing every server complains about.
+
+Config.Territory = {
+    enabled = true,
+}
+
+-- Only the states by default. The district and outline hashes exist too (Grizzlies,
+-- Scarlett Meadows, Cholla Springs, every town outline) - add them here when you want
+-- a finer map; the reference table above has them all.
+Config.Territories = {
+    { zone = 0x3B8DD21A, id = 'ambarino',        color = 'white' },      -- STATE_AMBARINO
+    { zone = 0x41332496, id = 'new_hanover',     color = 'yellow' },     -- STATE_NEW_HANOVER
+    { zone = 0x945395DF, id = 'lemoyne',         color = 'blue' },       -- STATE_LEMOYNE
+    { zone = 0xD69B5B49, id = 'west_elizabeth',  color = 'greenlight' }, -- STATE_WEST_ELIZABETH
+    { zone = 0x41759831, id = 'new_austin',      color = 'copper' },     -- STATE_NEW_AUSTIN
+    { zone = 0x30FAE29B, id = 'roanoke_ridge',   color = 'red' },        -- DISTRICT_ROANOKE_RIDGE
+    { zone = 0xBB785C8A, id = 'wapiti',          color = 'greenlight' }, -- REGION_GRZ_WAPITI
+    -- { zone = 0x9307FD41, id = 'guarma',       color = 'orange' },     -- STATE_GUARMA
+    -- { zone = 0x33F2D34F, id = 'nuevo_paraiso', color = 'orange' },    -- STATE_NUEVO_PARAISO
+}
+
+-- ████████████████████████████████████████████████████████████████████████████████
+-- ████████████████████████ ONE COLOUR PER TOWN ███████████████████████████████████
+-- ████████████████████████████████████████████████████████████████████████████████
+-- Valentine green, Annesburg yellow, Blackwater white - a glance at the map tells you
+-- which part of the country you are looking at. `exports['lxr-mapcolor']:town('valentine')`
+-- returns that town's modifier; other resources can tint their own blips by town.
+--
+-- With Config.TownBlips.enabled the resource also drops one blip per town in its colour.
+-- The coordinates below are the town centres to within a few metres. If one sits wrong for
+-- you, stand where you want it and run:  /mapcolor here <town>   - it rewrites the entry.
+
+Config.Towns = {
+    valentine    = { color = 'green',      coords = vector3(-273.0,   781.0,   119.0) },
+    annesburg    = { color = 'yellow',     coords = vector3(2930.0,  1310.0,    44.0) },
+    blackwater   = { color = 'white',      coords = vector3(-871.0, -1350.0,    43.0) },
+    saintdenis   = { color = 'purple',     coords = vector3(2640.0, -1300.0,    46.0) },
+    rhodes       = { color = 'red',        coords = vector3(1348.0, -1300.0,    77.0) },
+    strawberry   = { color = 'greenlight', coords = vector3(-1794.0, -391.0,   155.0) },
+    armadillo    = { color = 'copper',     coords = vector3(-3725.0,-2600.0,   -13.0) },
+    tumbleweed   = { color = 'orange',     coords = vector3(-5512.0,-2950.0,    -2.0) },
+    vanhorn      = { color = 'bluelight',  coords = vector3(2970.0,   520.0,    44.0) },
+    emeraldranch = { color = 'silver',     coords = vector3(1417.0,   352.0,    89.0) },
+    wallace      = { color = 'pink',       coords = vector3(-1400.0,  490.0,   105.0) },
+    colter       = { color = 'blue',       coords = vector3(1540.0,  2290.0,   304.0) },
+}
+
+Config.TownBlips = {
+    enabled  = true,    -- draw one blip per town in its own colour
+    sprite   = 1755311170,   -- BLIP_STYLE_TOWN
+    showName = true,    -- label it with the town's name from the locale
+    scale    = 0.2,
+}
+
+-- Only recolour the kinds named above. false = a blip this resource has no opinion
+-- about keeps the colour the game gave it, which is how RSG behaves. true = the old
+-- behaviour, where every unknown blip fell back to Config.Theme and the whole map
+-- came out one colour - the look people recognise as VORP.
+Config.TintUnknown = false
 
 Config.Console = true    -- print the applied theme in F8
 
