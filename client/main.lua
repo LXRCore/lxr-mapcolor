@@ -123,7 +123,12 @@ end
 
 local painted = {}
 
+---A territory's colour. `modifier` wins and is used exactly as written - several of the
+---colours these zones want have no entry in Config.Presets, and rounding them to the
+---nearest one we happen to have would quietly change the map. Otherwise `color` names a
+---preset, and a row with neither follows the theme.
 local function territoryColour(t)
+    if t.modifier then return joaat(t.modifier) end
     local preset = t.color and Config.Presets[t.color]
     return joaat((preset or themeDef()).blipModifier)
 end

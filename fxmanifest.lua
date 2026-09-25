@@ -20,7 +20,7 @@ lua54 'yes'
 name 'lxr-mapcolor'
 author 'iBoss21 / LXRCore'
 description 'LXRCore map colour: themed waypoint route + shared blip colour vocabulary (standalone)'
-version '3.1.0'
+version '3.1.1'
 repository 'https://github.com/LXRCore/lxr-mapcolor'
 
 shared_scripts {

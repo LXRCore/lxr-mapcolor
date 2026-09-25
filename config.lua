@@ -127,19 +127,30 @@ Config.Territory = {
     enabled = true,
 }
 
--- Only the states by default. The district and outline hashes exist too (Grizzlies,
--- Scarlett Meadows, Cholla Springs, every town outline) - add them here when you want
--- a finer map; the reference table above has them all.
+-- The states, plus the two regions that read as their own country on the map: Roanoke
+-- Ridge and the Wapiti reserve. The colours are the ones the RedM community settled on for
+-- these zones, so the map looks the way people expect a RedM map to look.
+--
+-- The finer hashes exist too - every district (Grizzlies, Scarlett Meadows, Cholla Springs,
+-- Big Valley...) and every town outline. They are deliberately not listed here: pick the
+-- ones you want from femga/rdr3_discoveries and give each its own colour. Leaving the
+-- curation to the server is the point - a 78-row table nobody edits is somebody else's
+-- taste, not ours.
 Config.Territories = {
-    { zone = 0x3B8DD21A, id = 'ambarino',        color = 'white' },      -- STATE_AMBARINO
-    { zone = 0x41332496, id = 'new_hanover',     color = 'yellow' },     -- STATE_NEW_HANOVER
-    { zone = 0x945395DF, id = 'lemoyne',         color = 'blue' },       -- STATE_LEMOYNE
-    { zone = 0xD69B5B49, id = 'west_elizabeth',  color = 'greenlight' }, -- STATE_WEST_ELIZABETH
-    { zone = 0x41759831, id = 'new_austin',      color = 'copper' },     -- STATE_NEW_AUSTIN
-    { zone = 0x30FAE29B, id = 'roanoke_ridge',   color = 'red' },        -- DISTRICT_ROANOKE_RIDGE
-    { zone = 0xBB785C8A, id = 'wapiti',          color = 'greenlight' }, -- REGION_GRZ_WAPITI
-    -- { zone = 0x9307FD41, id = 'guarma',       color = 'orange' },     -- STATE_GUARMA
-    -- { zone = 0x33F2D34F, id = 'nuevo_paraiso', color = 'orange' },    -- STATE_NUEVO_PARAISO
+    -- `modifier` is the game's own colour name, used verbatim. Several of these have no
+    -- entry in Config.Presets above (MP_COLOR_4, _19, _22 are not in our palette), so the
+    -- row carries the modifier directly rather than being rounded to the nearest preset —
+    -- the point of this set is that it is exact. A row may use `color = '<preset>'` instead
+    -- when you want it to follow the theme.
+    { zone = 0x3B8DD21A, id = 'ambarino',       modifier = 'BLIP_MODIFIER_MP_COLOR_1'  }, -- STATE_AMBARINO
+    { zone = 0x41332496, id = 'new_hanover',    modifier = 'BLIP_MODIFIER_MP_COLOR_8'  }, -- STATE_NEW_HANOVER
+    { zone = 0x945395DF, id = 'lemoyne',        modifier = 'BLIP_MODIFIER_MP_COLOR_3'  }, -- STATE_LEMOYNE
+    { zone = 0xD69B5B49, id = 'west_elizabeth', modifier = 'BLIP_MODIFIER_MP_COLOR_6'  }, -- STATE_WEST_ELIZABETH
+    { zone = 0x41759831, id = 'new_austin',     modifier = 'BLIP_MODIFIER_MP_COLOR_4'  }, -- STATE_NEW_AUSTIN
+    { zone = 0x30FAE29B, id = 'roanoke_ridge',  modifier = 'BLIP_MODIFIER_MP_COLOR_19' }, -- DISTRICT_ROANOKE_RIDGE
+    { zone = 0xBB785C8A, id = 'wapiti',         modifier = 'BLIP_MODIFIER_MP_COLOR_2'  }, -- REGION_GRZ_WAPITI
+    -- { zone = 0x9307FD41, id = 'guarma',        modifier = 'BLIP_MODIFIER_MP_COLOR_7'  }, -- STATE_GUARMA
+    -- { zone = 0x33F2D34F, id = 'nuevo_paraiso', modifier = 'BLIP_MODIFIER_MP_COLOR_7'  }, -- STATE_NUEVO_PARAISO
 }
 
 -- ████████████████████████████████████████████████████████████████████████████████

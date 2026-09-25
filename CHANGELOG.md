@@ -1,5 +1,16 @@
 # Changelog
 
+## 3.1.1 — 2026-09-25
+
+### Changed
+- **The territory colours are now the community's own values for these zones**, used
+  exactly: Ambarino `MP_COLOR_1`, New Hanover `8`, Lemoyne `3`, West Elizabeth `6`,
+  New Austin `4`, Roanoke Ridge `19`, Wapiti `2`. Three of those (`4`, `19`, `22`) have no
+  entry in `Config.Presets`, so a territory row can now carry `modifier = 'BLIP_MODIFIER_…'`
+  directly instead of naming a preset — rounding them to the nearest colour we happened to
+  have would have quietly changed the map. `color = '<preset>'` still works for any row that
+  should follow the theme.
+
 ## 3.1.0 — 2026-09-25
 
 ### Added
